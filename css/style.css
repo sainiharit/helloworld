@@ -436,6 +436,23 @@ pre {
     font-size: inherit;
     color: inherit;
     word-break: normal; }
+input,
+button,
+select,
+optgroup,
+textarea {
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit; }
+
+button,
+input {
+  overflow: visible; }
+
+button,
+select {
+  text-transform: none; }
 
 .pre-scrollable {
   max-height: 340px;
