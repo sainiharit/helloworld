@@ -6,8 +6,7 @@
 (function($) {
 
 	"use strict";
-
-	$(window).stellar({
+$(window).stellar({
     responsive: true,
     parallaxBackgrounds: true,
     parallaxElements: true,
@@ -52,11 +51,8 @@
 			if ( $('#ftco-nav').is(':visible') ) {
 				$(this).removeClass('active');
 			} else {
-				$(this).addClass('active');	
+				window.location('./burger-menu.html');	
 			}
-
-			
-			
 		});
 
 	};
