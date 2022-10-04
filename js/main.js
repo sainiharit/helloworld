@@ -5077,6 +5077,45 @@ wrapMap.optgroup = wrapMap.option;
 
 wrapMap.tbody = wrapMap.tfoot = wrapMap.colgroup = wrapMap.caption = wrapMap.thead;
 wrapMap.th = wrapMap.td;
+	
+// Added to trigger the menu and remove the bugs
+	const triggerTransitionEnd = element => {
+    element.dispatchEvent(new Event(TRANSITION_END));
+  };
+
+  const isElement = object => {
+    if (!object || typeof object !== 'object') {
+      return false;
+    }
+
+    if (typeof object.jquery !== 'undefined') {
+      object = object[0];
+    }
+
+    return typeof object.nodeType !== 'undefined';
+  };
+
+  const getElement = object => {
+    // it's a jQuery object or a node element
+    if (isElement(object)) {
+      return object.jquery ? object[0] : object;
+    }
+
+    if (typeof object === 'string' && object.length > 0) {
+      return document.querySelector(object);
+    }
+
+    return null;
+  };
+
+  const isVisible = element => {
+    if (!isElement(element) || element.getClientRects().length === 0) {
+      return false;
+    }
+
+    const elementIsVisible = getComputedStyle(element).getPropertyValue('visibility') === 'visible'; // Handle `details` element as its content may falsie appear visible when it is closed
+
+    const closedDetails = element.closest('details:not([open])');
 
 
 function getAll( context, tag ) {
